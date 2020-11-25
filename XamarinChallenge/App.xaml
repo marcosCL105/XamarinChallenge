@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChallenge.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--  Global Styles CEL  -->
+            <Color x:Key="SnackBarColor">#323232</Color>
+            <Color x:Key="FontColorCEL">#414142</Color>
+            <Color x:Key="GrayDark">#414142</Color>
+            <Color x:Key="SkyBlueCEL">#009FCE</Color>
+            <Color x:Key="FontSoftCEL">#717172</Color>
+            <Color x:Key="MainOrange">#DC291E</Color>
+            <Color x:Key="FontBlackCEL">#444445</Color>
+            <Color x:Key="LightGreyCEL">#D7D7D8</Color>
+            <Color x:Key="ActionLabelBlue">#11A6D1</Color>
+            <Color x:Key="SplashColor">#e62225</Color>
+            <Color x:Key="Pineapple">#FCD131</Color>
+            <Color x:Key="Mango">#EF8D29</Color>
+            <Color x:Key="MangoOpacity">#50EF8D29</Color>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

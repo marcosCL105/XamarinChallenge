@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChallenge.MainPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             Visual="Material">
+    <StackLayout Margin="10">
+        <SearchBar x:Name="searchBar"
+            Placeholder="¿Que estas buscando?"
+            Keyboard="Text"
+            SearchCommand="{Binding SearchCommand}"
+            Text="{Binding TextToSearch}"/>
+
+        <Button
+            Margin="10"
+            Padding="0"
+            BackgroundColor="{StaticResource SkyBlueCEL}"
+            BorderColor="{StaticResource SkyBlueCEL}"
+            BorderWidth="2"
+            Command="{Binding SearchCommand}"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            HorizontalOptions="FillAndExpand"
+            Text="Search"
+            TextColor="White"
+            VerticalOptions="Center"
+            HeightRequest="50">
+            <Button.CornerRadius>
+                <OnPlatform
+                    x:TypeArguments="x:Int32"
+                    Android="50"
+                    iOS="22" />
+            </Button.CornerRadius>
+        </Button>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChallenge.Views.Common.LoadingContentViewWithLottie"
+             xmlns:LottieAnimation="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             Margin="0"
+             Padding="0"
+             AbsoluteLayout.LayoutBounds="0,0,1,1"
+             AbsoluteLayout.LayoutFlags="All"
+             BackgroundColor="#30777777">
+    <Grid
+        x:Name="testObjectName"
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <!--<ff:CachedImage
+            Grid.Row="0"
+            Grid.Column="0"
+            Aspect="AspectFit"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <ff:CachedImage.Source>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android" Value="ic_spinner_back.png" />
+                    <On Platform="iOS" Value="ic_spinner_back" />
+                </OnPlatform>
+            </ff:CachedImage.Source>
+        </ff:CachedImage>-->
+        <LottieAnimation:AnimationView
+            x:Name="loadingAnimation"
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="5"
+            Animation="loading_lottie.json"
+            AutoPlay="True"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand" />
+    </Grid>
+</ContentView>

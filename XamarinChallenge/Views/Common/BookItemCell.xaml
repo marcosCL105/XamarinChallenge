@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChallenge.Views.Common.BookItemCell">
+    <Frame
+        x:Name="borderFrame"
+        Margin="0"
+        Padding="0"
+        BorderColor="Transparent"
+        CornerRadius="10"
+        HasShadow="False"
+        HorizontalOptions="FillAndExpand"
+        IsClippedToBounds="True"
+        VerticalOptions="FillAndExpand">
+        <Grid
+            Margin="0"
+            Padding="10,5,5,5"
+            HorizontalOptions="FillAndExpand"
+            IsClippedToBounds="True"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="105" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                x:Name="bookTitle"
+                Grid.Row="0"
+                Margin="0"
+                Padding="0,5,0,0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding VolumeInfo.Title}"
+                TextColor="{StaticResource FontColorCEL}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                MaxLines="2"
+                LineBreakMode="TailTruncation"
+                AutomationId="bookTitleLabel"
+                FontSize="Medium"/>
+
+            <Image x:Name="bookImage"
+                Grid.Row="1"
+                Margin="10"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                Aspect="AspectFit"
+                Source="{Binding VolumeInfo.ImageLinks.SmallThumbnail}"/>
+
+            <Label
+                x:Name="authorsLabel"
+                Grid.Row="2"
+                Margin="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding VolumeInfo.FormatedAuthorsLabel}"
+                TextColor="{StaticResource GrayDark}"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                MaxLines="2"
+                LineBreakMode="TailTruncation"
+                AutomationId="authorsLabelA"
+                FontSize="Micro"/>
+
+            <Label
+                x:Name="publishLabel"
+                Grid.Row="3"
+                Margin="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding VolumeInfo.PublishedDateLabel}"
+                TextColor="{StaticResource Mango}"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                MaxLines="2"
+                LineBreakMode="TailTruncation"
+                AutomationId="publishLabelA"
+                FontSize="Micro"/>
+        </Grid>
+    </Frame>
+</ContentView>

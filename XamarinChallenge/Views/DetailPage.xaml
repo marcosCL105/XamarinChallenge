@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChallenge.Views.DetailPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:common="clr-namespace:XamarinChallenge.Views.Common"
+             ios:Page.UseSafeArea="True"
+             Visual="Material">
+    <ScrollView HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+        <Grid
+            Margin="10"
+            Padding="10"
+            HorizontalOptions="FillAndExpand"
+            IsClippedToBounds="True"
+            RowSpacing="10"
+            VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="105" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                x:Name="bookTitle"
+                Grid.Row="0"
+                Margin="0"
+                Padding="0,5,0,0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SelectedItem.VolumeInfo.Title}"
+                TextColor="{StaticResource FontColorCEL}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                AutomationId="bookTitleLabel"
+                FontSize="Large"/>
+
+            <Image x:Name="bookImage"
+                Grid.Row="1"
+                Margin="10"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"
+                Aspect="AspectFit"
+                Source="{Binding SelectedItem.VolumeInfo.ImageLinks.Thumbnail}"/>
+
+            <Label
+                x:Name="authorsLabel"
+                Grid.Row="2"
+                Margin="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SelectedItem.VolumeInfo.FormatedAuthorsLabel}"
+                TextColor="{StaticResource GrayDark}"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                AutomationId="authorsLabelA"
+                FontSize="Medium"/>
+
+            <Label
+                x:Name="publisherLabel"
+                Grid.Row="3"
+                Margin="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SelectedItem.VolumeInfo.Publisher,
+                              Path=Value,
+                              StringFormat='Publisher: {0:c}'}"
+                TextColor="{StaticResource GrayDark}"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                AutomationId="publishLabelA"
+                FontSize="Medium"/>
+
+            <Label
+                x:Name="publishLabel"
+                Grid.Row="4"
+                Margin="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SelectedItem.VolumeInfo.PublishedDateLabel}"
+                TextColor="{StaticResource Mango}"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                AutomationId="publishLabelA"
+                FontSize="Medium"/>
+
+        <Label
+                x:Name="webLinkReaderLabel"
+                Grid.Row="5"
+                Margin="0"
+                HorizontalTextAlignment="Center"
+                Text="{Binding SelectedItem.AccessInfo.WebReaderLink}"
+                TextColor="{StaticResource SkyBlueCEL}"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                AutomationId="publishLabelA"
+                FontSize="Medium"
+                TextDecorations="Underline">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding WebLinkReaderCommand}"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <WebView Grid.Row="6"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"
+                 Source="{Binding WebLink}"
+                 IsVisible="{Binding WebLinkVisibility}"
+                 WidthRequest="{Binding ScreenWidth}"
+                 HeightRequest="700"/>
+
+        <Button
+            Grid.Row="7"
+            Margin="10"
+            Padding="0"
+            BackgroundColor="{StaticResource SkyBlueCEL}"
+            BorderColor="{StaticResource SkyBlueCEL}"
+            BorderWidth="2"
+            Command="{Binding GoBackCommand}"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            HorizontalOptions="FillAndExpand"
+            Text="Go back to list"
+            TextColor="White"
+            VerticalOptions="EndAndExpand"
+            HeightRequest="50">
+            <Button.CornerRadius>
+                <OnPlatform
+                    x:TypeArguments="x:Int32"
+                    Android="50"
+                    iOS="22" />
+            </Button.CornerRadius>
+        </Button>
+        </Grid>
+    </ScrollView>
+</ContentPage>

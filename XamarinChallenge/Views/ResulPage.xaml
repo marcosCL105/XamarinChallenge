@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChallenge.Views.ResulPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:common="clr-namespace:XamarinChallenge.Views.Common"
+             ios:Page.UseSafeArea="True"
+             Visual="Material">
+
+    <Grid Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <CollectionView Grid.Row="0"
+            x:Name="bookCollectionView"
+            HorizontalOptions="FillAndExpand"
+            ItemsSource="{Binding BookList}"
+            SelectionMode="Single"
+            VerticalOptions="FillAndExpand"
+            RemainingItemsThresholdReachedCommand="{Binding ItemTresholdReachedCommand}"
+            RemainingItemsThreshold="{Binding RemainingItemsThreshold}"
+            SelectionChangedCommand="{Binding SelectionChangedCommand}"
+            SelectedItem="{Binding SelectedItem}">
+            <CollectionView.ItemsLayout>
+               <GridItemsLayout Orientation="Vertical"
+                                Span="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <common:BookItemCell />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            <CollectionView.Footer>
+                <StackLayout BackgroundColor="White"
+                             HeightRequest="50"
+                             IsVisible="{Binding IsAddingMoreItems}"
+                             Padding="10">
+                    <ActivityIndicator HorizontalOptions="Center"
+                                       VerticalOptions="End"
+                                       WidthRequest="25"
+                                       HeightRequest="25"
+                                       IsRunning="{Binding IsAddingMoreItems}"
+                                       Color="{StaticResource SkyBlueCEL}"/>
+                </StackLayout>
+            </CollectionView.Footer>
+        </CollectionView>
+
+        <Button
+            Grid.Row="1"
+            Margin="10"
+            Padding="0"
+            BackgroundColor="{StaticResource SkyBlueCEL}"
+            BorderColor="{StaticResource SkyBlueCEL}"
+            BorderWidth="2"
+            Command="{Binding GoHomeCommand}"
+            CommandParameter="{Binding TextToSearch}"
+            FontAttributes="Bold"
+            FontSize="Medium"
+            HorizontalOptions="FillAndExpand"
+            Text="Go Home"
+            TextColor="White"
+            VerticalOptions="EndAndExpand"
+            HeightRequest="50">
+            <Button.CornerRadius>
+                <OnPlatform
+                    x:TypeArguments="x:Int32"
+                    Android="50"
+                    iOS="22" />
+            </Button.CornerRadius>
+        </Button>
+
+        <common:LoadingContentViewWithLottie
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            x:Name="LoadingView"
+            VerticalOptions="Fill"
+            HorizontalOptions="Fill"
+            InputTransparent="False"
+            IsVisible="False"
+            PlayLoading="{Binding IsLoading}" />
+    </Grid>
+</ContentPage>
